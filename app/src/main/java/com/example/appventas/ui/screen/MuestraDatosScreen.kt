@@ -35,6 +35,14 @@ fun MuestraDatosScreen(
 
             Button(
                 onClick = {
+                    navController.navigate("registro")
+                }
+            ) {
+                Text("Crear vendedor")
+            }
+
+            Button(
+                onClick = {
                     navController.navigate("login") {
                         popUpTo("login") { inclusive = true }
                         launchSingleTop = true
