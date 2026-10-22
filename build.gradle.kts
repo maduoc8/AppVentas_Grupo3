@@ -2,4 +2,6 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.compose) apply false
+//aqui
+    alias(libs.plugins.ksp) apply false  // <--- También debe estar aquí
 }
