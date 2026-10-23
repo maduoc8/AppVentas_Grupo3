@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    //aqui
+    alias(libs.plugins.ksp)  // <--- Incorporar
 }
 
 android {
@@ -59,6 +61,13 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended:1.6.8")
     // Material Symbols (para íconos nuevos como Fastfood, Grass, Cheese, etc.)
     implementation("androidx.compose.material:material-icons-extended:1.7.0-beta01")
+
+// Dependencias Room
+    val roomVersion = "2.8.4"
+
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")  // <-- KSP
 
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))
