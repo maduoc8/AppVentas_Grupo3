@@ -43,6 +43,14 @@ fun MuestraDatosScreen(
 
             Button(
                 onClick = {
+                    navController.navigate("qrScanner")
+                }
+            ) {
+                Text("Escanear QR")
+            }
+
+            Button(
+                onClick = {
                     navController.navigate("login") {
                         popUpTo("login") { inclusive = true }
                         launchSingleTop = true

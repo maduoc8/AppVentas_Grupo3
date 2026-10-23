@@ -9,12 +9,18 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.appventas.ui.screen.LoginScreen
 import com.example.appventas.ui.screen.MuestraDatosScreen
+import com.example.appventas.ui.screen.QrScannerScreen
 import com.example.appventas.ui.screen.RegistroScreen
 import com.example.appventas.ui.screen.ResumenScreen
+import com.example.appventas.viewmodel.QrViewModel
 import com.example.appventas.viewmodel.UsuarioViewModel
 
 @Composable
-fun AppNavigation(){
+fun AppNavigation(
+    qrViewModel: QrViewModel,
+    hasCameraPermission: Boolean,
+    onRequestPermission: () -> Unit
+){
     val navController = rememberNavController()
 
     //  Aquí creamos el ViewModel
@@ -48,6 +54,15 @@ fun AppNavigation(){
 
         composable("resumen") {
             ResumenScreen(usuarioViewModel)
+        }
+
+        // Lector de códigos QR
+        composable("qrScanner") {
+            QrScannerScreen(
+                viewModel = qrViewModel,
+                hasCameraPermission = hasCameraPermission,
+                onRequestPermission = onRequestPermission
+            )
         }
 
 
