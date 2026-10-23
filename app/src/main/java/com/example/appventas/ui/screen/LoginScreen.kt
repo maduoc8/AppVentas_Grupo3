@@ -1,5 +1,6 @@
 package com.example.appventas.ui.screen
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -139,7 +140,16 @@ fun LoginScreen(
 
 
             Button(onClick={
-            vm.submit { user ->
+            vm.submit(
+                // Vendedor creado por el admin: entra a su sección de ventas
+                onVendedor = { vendedor ->
+                    navController.navigate("inicioVendedor/${Uri.encode(vendedor.nombre)}/${Uri.encode(vendedor.correo)}")
+                    {
+                        popUpTo("login") {inclusive=true}  // no permita volver
+                        launchSingleTop=true
+                    }
+                }
+            ) { user ->
 
                 navController.navigate("muestraDatos/$user")
                 {// inicio navegacion
