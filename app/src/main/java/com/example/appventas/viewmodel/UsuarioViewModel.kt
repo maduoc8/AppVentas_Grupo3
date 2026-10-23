@@ -121,4 +121,9 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
             onListo()
         }
     }
+
+    // Deja el formulario vacío para registrar otro vendedor
+    fun limpiarFormulario() {
+        _estado.value = UsuarioUiState()
+    }
 }
