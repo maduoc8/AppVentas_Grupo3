@@ -7,12 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.appventas.viewmodel.UsuarioViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MuestraDatosScreen(
     username: String,
-    navController: NavController
+    navController: NavController,
+    viewModel: UsuarioViewModel
 ) {
     Scaffold(
         topBar = {
@@ -35,18 +37,12 @@ fun MuestraDatosScreen(
 
             Button(
                 onClick = {
+                    // Formulario vacío: no muestra los datos del vendedor anterior
+                    viewModel.limpiarFormulario()
                     navController.navigate("registro")
                 }
             ) {
                 Text("Crear vendedor")
-            }
-
-            Button(
-                onClick = {
-                    navController.navigate("qrScanner")
-                }
-            ) {
-                Text("Escanear QR")
             }
 
             Button(
