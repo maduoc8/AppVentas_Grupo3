@@ -48,13 +48,13 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 _estado.update { it.copy(ventas = lista) }
             }
         }
-    }
+    } // fin iniciarVendedor
 
     fun cerrarSesion() {
         listaJob?.cancel()
         listaJob = null
         _estado.value = VentaUiState()
-    }
+    } // fin cerrarSesion
 
     // ---------- Eventos del formulario ----------
 
@@ -65,7 +65,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(tipoServicio = null)
             )
         }
-    }
+    } // fin onTipoServicioChange
 
     fun onFechaChange(valor: String) {
         _estado.update {
@@ -74,7 +74,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(fecha = null)
             )
         }
-    }
+    } // fin onFechaChange
 
     fun onClienteChange(valor: String) {
         _estado.update {
@@ -83,7 +83,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(cliente = null)
             )
         }
-    }
+    } // fin onClienteChange
 
     fun onMontoChange(valor: String) {
         _estado.update {
@@ -92,7 +92,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(monto = null)
             )
         }
-    }
+    } // fin onMontoChange
 
     fun onCodigoChange(valor: String) {
         _estado.update {
@@ -101,15 +101,15 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(codigo = null)
             )
         }
-    }
+    } // fin onCodigoChange
 
     fun onObservacionesChange(valor: String) {
         _estado.update { it.copy(observaciones = valor) }
-    }
+    } // fin onObservacionesChange
 
     fun onBusquedaChange(valor: String) {
         _estado.update { it.copy(busqueda = valor) }
-    }
+    } // fin onBusquedaChange
 
     // La cámara leyó un QR: se usa como código de autorización y queda como respaldo
     fun onQrDetectado(contenido: String) {
@@ -121,7 +121,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(codigo = null)
             )
         }
-    }
+    } // fin onQrDetectado
 
     // ---------- Validación ----------
 
@@ -167,7 +167,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         return !hayErrores
-    }
+    } // fin validarFormulario
 
     // ---------- Lista ----------
 
@@ -180,7 +180,7 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 busqueda = it.busqueda
             )
         }
-    }
+    } // fin iniciarNuevaVenta
 
     // Pasa una venta de la lista al formulario (solo si no está validada)
     fun cargarVentaParaEditar(venta: VentaEntity) {
@@ -207,7 +207,19 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 respaldo = venta.respaldo
             )
         }
-    }
+    } // fin cargarVentaParaEditar
+
+    // Elimina una venta de la lista (misma regla que editar: solo si no está validada)
+    fun eliminarVenta(venta: VentaEntity) {
+        viewModelScope.launch {
+            // Se revisa la versión guardada en Room por si cambió de estado
+            val actual = repository.obtenerPorId(venta.id) ?: return@launch
+            if (!actual.esEditable()) return@launch
+
+            repository.eliminar(actual)
+            // El Flow de Room actualiza la lista automáticamente
+        }
+    } // fin eliminarVenta
 
     // ---------- Guardado ----------
 
@@ -273,9 +285,9 @@ class VentaViewModel(app: Application) : AndroidViewModel(app) {
                 )
             }
         }
-    }
+    } // fin guardarVenta
 
     fun limpiarGuardadoExitoso() {
         _estado.update { it.copy(guardadoExitosamente = false) }
-    }
+    } // fin limpiarGuardadoExitoso
 }

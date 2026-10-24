@@ -19,11 +19,11 @@ class LoginViewModel (
 
     fun onUsernameChange(value:String){
         uiState=uiState.copy(username=value, error=null)
-    }
+    } // fin onUsernameChange
 
     fun onPasswordChange(value:String){
         uiState=uiState.copy(password =value, error=null)
-    }
+    } // fin onPasswordChange
 
     fun submit(onVendedor:(UsuarioEntity) -> Unit = {}, onSuccess:(String) -> Unit){
 
@@ -38,7 +38,7 @@ class LoginViewModel (
 
 
 
-    }
+    } // fin submit
 
     // Si no es el admin, se busca un vendedor creado por el admin en Room
     private fun buscarVendedor(onVendedor:(UsuarioEntity) -> Unit){
@@ -51,7 +51,7 @@ class LoginViewModel (
             if(vendedor!=null) onVendedor(vendedor)
             else uiState=uiState.copy(error="Credenciales incorrectas")
         }
-    }
+    } // fin buscarVendedor
 
 
 

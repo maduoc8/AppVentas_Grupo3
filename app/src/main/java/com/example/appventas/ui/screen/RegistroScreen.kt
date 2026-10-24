@@ -205,4 +205,4 @@ fun RegistroScreen(
         }
     }
     }
-}
+} // fin RegistroScreen

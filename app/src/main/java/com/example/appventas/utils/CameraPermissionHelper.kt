@@ -11,5 +11,5 @@ object CameraPermissionHelper {
             context,
             Manifest.permission.CAMERA
         ) == PackageManager.PERMISSION_GRANTED
-    }
+    } // fin hasCameraPermission
 }

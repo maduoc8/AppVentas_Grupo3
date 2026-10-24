@@ -14,9 +14,9 @@ class QrViewModel : ViewModel() {
 
     fun onQrDetected(content: String) {
         _qrResult.value = repository.processQrContent(content)
-    }
+    } // fin onQrDetected
 
     fun clearResult() {
         _qrResult.value = null
-    }
+    } // fin clearResult
 }

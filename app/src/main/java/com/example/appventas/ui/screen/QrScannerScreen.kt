@@ -136,4 +136,4 @@ fun QrScannerScreen(
             }
         }
     }
-}
+} // fin QrScannerScreen

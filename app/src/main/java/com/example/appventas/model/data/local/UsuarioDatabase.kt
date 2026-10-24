@@ -23,6 +23,6 @@ abstract class UsuarioDatabase : RoomDatabase() {
                     "usuario_database"
                 ).build().also { INSTANCE = it }
             }
-        }
+        } // fin getDatabase
     }
 }

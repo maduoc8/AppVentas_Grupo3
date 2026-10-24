@@ -2,6 +2,7 @@ package com.example.appventas.model.data.local
 
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -15,6 +16,9 @@ interface VentaDao {
 
     @Update
     suspend fun actualizar(venta: VentaEntity)
+
+    @Delete
+    suspend fun eliminar(venta: VentaEntity)
 
     // Solo las ventas del vendedor que inició sesión
     @Query("SELECT * FROM ventas WHERE vendedorCorreo = :correo ORDER BY id DESC")

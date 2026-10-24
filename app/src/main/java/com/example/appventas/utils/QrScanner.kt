@@ -219,4 +219,4 @@ fun QrScanner(
             )
         }
     }
-}
+} // fin QrScanner

@@ -130,4 +130,4 @@ fun QrVentaScreen(
             }
         }
     }
-}
+} // fin QrVentaScreen

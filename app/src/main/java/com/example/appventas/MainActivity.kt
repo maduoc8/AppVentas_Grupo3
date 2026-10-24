@@ -64,11 +64,11 @@ class MainActivity : ComponentActivity() {
                 Toast.makeText(this, "Código QR Detectado: ${result.content}", Toast.LENGTH_LONG).show()
             }
         }
-    }
+    } // fin onCreate
 
     override fun onResume() {
         super.onResume()
         // Actualizar estado del permiso cuando la app se reanuda
         hasCameraPermission = CameraPermissionHelper.hasCameraPermission(this)
-    }
+    } // fin onResume
 }

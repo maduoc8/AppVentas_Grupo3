@@ -171,7 +171,7 @@ fun VentaFormScreen(
         }
     }
     }
-}
+} // fin VentaFormScreen
 
 // Campo de texto con ícono y mensaje de error, igual en todo el formulario
 @Composable
@@ -219,4 +219,4 @@ private fun CampoVenta(
         minLines = if (unaLinea) 1 else 3,
         modifier = Modifier.fillMaxWidth()
     )
-}
+} // fin CampoVenta

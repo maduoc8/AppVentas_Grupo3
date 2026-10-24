@@ -31,7 +31,7 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(nombre = null)
             )
         }
-    }
+    } // fin onNombreChange
 
     // Actualiza el campo correo
     fun onCorreoChange(valor: String) {
@@ -41,7 +41,7 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(correo = null)
             )
         }
-    }
+    } // fin onCorreoChange
 
     // Actualiza el campo clave
     fun onClaveChange(valor: String) {
@@ -51,7 +51,7 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(clave = null)
             )
         }
-    }
+    } // fin onClaveChange
 
     // Actualiza el campo dirección
     fun onDireccionChange(valor: String) {
@@ -61,14 +61,14 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
                 errores = it.errores.copy(direccion = null)
             )
         }
-    }
+    } // fin onDireccionChange
 
     // Actualiza checkbox de aceptación
     fun onAceptarTerminosChange(valor: Boolean) {
         _estado.update {
             it.copy(aceptaTerminos = valor)
         }
-    }
+    } // fin onAceptarTerminosChange
 
     // Validación global del formulario
     fun validarFormulario(): Boolean {
@@ -104,7 +104,7 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
         }
 
         return !hayErrores
-    }
+    } // fin validarFormulario
 
     // Guarda en Room
     fun guardar(onListo: () -> Unit) {
@@ -120,10 +120,10 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
             )
             onListo()
         }
-    }
+    } // fin guardar
 
     // Deja el formulario vacío para registrar otro vendedor
     fun limpiarFormulario() {
         _estado.value = UsuarioUiState()
-    }
+    } // fin limpiarFormulario
 }

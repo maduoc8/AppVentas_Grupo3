@@ -68,4 +68,4 @@ fun ResumenScreen(navController: NavController, viewModel: UsuarioViewModel) {
         }
     }
     }
-}
+} // fin ResumenScreen

@@ -24,6 +24,6 @@ abstract class VentaDatabase : RoomDatabase() {
                     "venta_database"
                 ).build().also { INSTANCE = it }
             }
-        }
+        } // fin getDatabase
     }
 }
